@@ -1,7 +1,8 @@
 import json
+from typing import Any
 
 
-def fill_values(tests, values_dict):
+def fill_values(tests: list[dict[str, Any]], values_dict: dict[int, str]) -> list[dict[str, Any]]:
     for test in tests:
         test_id = test.get("id")
         if test_id in values_dict:
