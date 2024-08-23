@@ -2,8 +2,8 @@ import math
 
 
 def get_point_position_relative_circle(
-        circle_centre: tuple[int],
-        circle_radius: int, point: tuple[int]
+        circle_centre: tuple[int, int],
+        circle_radius: int, point: tuple[int, int]
     ) -> str:
     distance_squared = (
         (circle_centre[0] - point[0]) ** 2 +

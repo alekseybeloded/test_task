@@ -1,4 +1,4 @@
-def find_min_moves_to_equal_elements(nums):
+def find_min_moves_to_equal_elements(nums: list[int]) -> int:
     nums.sort()
     median = nums[len(nums) // 2]
     moves = sum(abs(num - median) for num in nums)
