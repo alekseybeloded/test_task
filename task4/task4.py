@@ -1,3 +1,6 @@
+import sys
+
+
 def find_min_moves_to_equal_elements(nums: list[int]) -> int:
     nums.sort()
     median = nums[len(nums) // 2]
@@ -7,11 +10,13 @@ def find_min_moves_to_equal_elements(nums: list[int]) -> int:
 
 if __name__ == '__main__':
     try:
-        with open(input('Введите наименование файла с массивом или путь до него '), 'r') as file:
+        array = sys.argv[1]
+        
+        with open(array, 'r') as file:
             nums = [int(line.strip()) for line in file.readlines()]
         
         min_moves = find_min_moves_to_equal_elements(nums)
         print(f"Минимальное количество ходов: {min_moves}")
         
-    except (FileNotFoundError, ValueError) as e:
+    except (FileNotFoundError, ValueError, IndexError) as e:
         print(f"Ошибка: {e}")
