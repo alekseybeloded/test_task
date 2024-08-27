@@ -1,4 +1,5 @@
 import math
+import sys
 
 
 def get_point_position_relative_circle(
@@ -24,7 +25,10 @@ def is_valid_coordinate(value: int) -> bool:
 
 if __name__ == '__main__':
     try:
-        with open(input('Введите наименование файла или путь до него '), 'r') as circle_file:
+        circle_file_path = sys.argv[1]
+        points_file_path = sys.argv[2] 
+
+        with open(circle_file_path, 'r') as circle_file:
             lines = circle_file.readlines()
             lines = [line.strip() for line in lines]
             circle_centre = tuple(map(int, lines[0].split()))
@@ -36,7 +40,7 @@ if __name__ == '__main__':
         if not is_valid_coordinate(circle_radius):
                 raise ValueError('Радиус окружности не соответствует диапазону.')
 
-        with open(input('Введите наименование файла или путь до него '), 'r') as points_file:
+        with open(points_file_path, 'r') as points_file:
             points = []
             for line in points_file:
                 x, y = map(int, line.split())
@@ -53,5 +57,5 @@ if __name__ == '__main__':
             result = get_point_position_relative_circle(circle_centre, circle_radius, point)
             print(result)
 
-    except (ValueError, FileNotFoundError) as e:
-        print(f'Ошибка ввода: {e}')
+    except (ValueError, FileNotFoundError, IndexError) as e:
+        print(f'Ошибка: {e}')
